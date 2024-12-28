@@ -46,7 +46,7 @@ Loading the Data:
 
 ## Fifth Commit
 
-- Built and initialized a Long Short-Term Memory model for Recurrent Neural Network Machine Learning focused towards the predcted closing stock price of Intel for the month of January 2025, based on data from 1980-2024.
+- Built and initialized a Long Short-Term Memory model for Recurrent Neural Network Machine Learning focused towards the predicted closing stock price of Intel for the month of January 2025, based on data from 1980-2024.
 
 - To execute the model and display the prediction:
 
