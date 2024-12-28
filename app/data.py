@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 import io
+from app.model import load_and_preprocess_data, build_lstm_model, train_model, predict_stock_prices, visualize_predictions
 
 app = Flask(__name__, template_folder=r"C:\\Users\\Ev\\Desktop\\IntelStockData\\templates")
 
@@ -12,6 +13,11 @@ if os.path.exists(data_path):
     df = pd.read_csv(data_path)
 else:
     raise FileNotFoundError(f"Data file not found at {data_path}")
+
+(X_train, X_test, y_train, y_test), scaler = load_and_preprocess_data(df)
+
+model = build_lstm_model(X_train)
+model = train_model(X_train, y_train, model)
 
 @app.route('/')
 def home():
@@ -113,6 +119,13 @@ def download_volume_plot():
     plt.savefig(img, format='png')
     img.seek(0)
     return send_file(img, mimetype='image/png', as_attachment=True, download_name='volume_plot.png')
+
+@app.route('/data/visualize/predictions', methods=['GET'])
+def visualize_predictions_route():
+    january_2025_dates = pd.date_range(start='2025-01-01', end='2025-01-31')
+    predicted_prices = predict_stock_prices(model, X_test, scaler, january_2025_dates)
+    visualize_predictions(predicted_prices, january_2025_dates)
+    return "Prediction chart displayed"
 
 if __name__ == '__main__':
     app.run(debug=True)

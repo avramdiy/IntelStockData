@@ -45,3 +45,15 @@ Loading the Data:
 - Initialized two individual download routes to save the aforementioned charts to local storage.
 
 ## Fifth Commit
+
+- Built and initialized a Long Short-Term Memory model for Recurrent Neural Network Machine Learning focused towards the predcted closing stock price of Intel for the month of January 2025, based on data from 1980-2024.
+
+- To execute the model and display the prediction:
+
+- "python -m app.model" to build the RNN model
+
+- "python -m app.data" to boot the Flask API
+
+- "/data/visualize/predictions route in browser to access prediction chart"
+
+- Integrated Tensorflow, Keras, & Matplotlib for final analysis.
