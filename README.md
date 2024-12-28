@@ -20,8 +20,20 @@ Loading the Data:
 
 - /data/summary: Provides summary statistics for numerical columns in the dataset.
 
-## Addiional Files
+### Additional Files
 
 - Added requirements.txt
 
 - Added README.md
+
+## Second Commit
+
+- The / route was modified to load the IMDb dataset into a Pandas DataFrame, made scrollable with CSS.
+
+- Initialized the index.html file, in which CSS was added for functionality.
+
+## Third Commit
+
+## Fourth Commit
+
+## Fifth Commit
