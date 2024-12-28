@@ -34,6 +34,12 @@ Loading the Data:
 
 ## Third Commit
 
+- For the first two visualizations, we used matplotlib.pyplot and BytesIO to save PNG files.
+
+- Initialized the /data/visualize/close route, which generates a line plot of the closing price over time.
+
+- Initialized the /data/visualize/volume route, which generates a line plot of the trading volume over time.
+
 ## Fourth Commit
 
 ## Fifth Commit
