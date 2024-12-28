@@ -42,4 +42,6 @@ Loading the Data:
 
 ## Fourth Commit
 
+- Initialized two individual download routes to save the aforementioned charts to local storage.
+
 ## Fifth Commit

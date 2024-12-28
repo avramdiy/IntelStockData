@@ -84,6 +84,35 @@ def visualize_volume():
     # Return the image as a response
     return send_file(img, mimetype='image/png')
 
+@app.route('/data/visualize/close/download', methods=['GET'])
+def download_close_plot():
+    df['Date'] = pd.to_datetime(df['Date'], utc=True)
+    img = io.BytesIO()
+    plt.figure(figsize=(10, 6))
+    plt.plot(df['Date'], df['Close'], label='Close Price', color='blue')
+    plt.title('Stock Closing Price Over Time')
+    plt.xlabel('Date')
+    plt.ylabel('Close Price (USD)')
+    plt.xticks(rotation=45)
+    plt.legend()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    return send_file(img, mimetype='image/png', as_attachment=True, download_name='closing_price_plot.png')
+
+@app.route('/data/visualize/volume/download', methods=['GET'])
+def download_volume_plot():
+    df['Date'] = pd.to_datetime(df['Date'], utc=True)
+    img = io.BytesIO()
+    plt.figure(figsize=(10, 6))
+    plt.plot(df['Date'], df['Volume'], label='Volume', color='orange')
+    plt.title('Trading Volume Over Time')
+    plt.xlabel('Date')
+    plt.ylabel('Volume')
+    plt.xticks(rotation=45)
+    plt.legend()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    return send_file(img, mimetype='image/png', as_attachment=True, download_name='volume_plot.png')
 
 if __name__ == '__main__':
     app.run(debug=True)
